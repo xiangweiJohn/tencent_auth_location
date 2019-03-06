@@ -2,11 +2,18 @@
 <view class="container">
 
   <!--获取用户城市-->
-  <view class="retailStore">
-    <view class="cnaps  borderBottom">
+  <!-- <view class="retailStore"> -->
+  <!-- <view class="cnaps  borderBottom">
       <text>所在城市</text>
       <input class='m-bbt' placeholder-class='plhStyle' type='number' maxlength='50' placeholder='' bindinput="bindKeyInput" value='{{province}} {{city}}' disabled></input>
-    </view>
+    </view> -->
+  <!-- </view> -->
+
+  <!--获取用户城市-->
+  <view class="city">
+    <text class='cityText'>所在城市:</text>
+    <input class='cityShow' type='text' maxlength='50' placeholder='' bindinput="bindKeyInput" 
+    value='{{province}} {{city}}' disabled></input>
   </view>
 
   <view class="userinfo">

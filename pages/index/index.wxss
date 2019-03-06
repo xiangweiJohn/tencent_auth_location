@@ -1,4 +1,10 @@
 /**index.wxss**/
+
+.city {
+  display: flex;
+  padding-bottom: 200rpx
+}
+
 .userinfo {
   display: flex;
   flex-direction: column;

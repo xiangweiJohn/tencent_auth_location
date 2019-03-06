@@ -16,12 +16,14 @@ Page({
     latitude: '',
     longitude: ''
   },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+
   onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({
@@ -56,20 +58,24 @@ Page({
     });
   },
 
-  onShow: function () {
+  onShow: function() {
     let vm = this;
     vm.getUserLocation();
   },
 
   getUserLocation: function() {
     let vm = this;
+
     wx.getSetting({
       success: (res) => {
         console.log(JSON.stringify(res))
         // res.authSetting['scope.userLocation'] == undefined    表示 初始化进入该页面
         // res.authSetting['scope.userLocation'] == false    表示 非初始化进入该页面,且未授权
         // res.authSetting['scope.userLocation'] == true    表示 地理位置授权
+
+        //非初始化且用户地理位置未授权的情况
         if (res.authSetting['scope.userLocation'] != undefined && res.authSetting['scope.userLocation'] != true) {
+
           wx.showModal({
             title: '请求授权当前位置',
             content: '需要获取您的地理位置，请确认授权',
@@ -103,7 +109,7 @@ Page({
               }
             }
           })
-        } else if (res.authSetting['scope.userLocation'] == undefined) {
+        } else if (res.authSetting['scope.userLocation'] == undefined) {//初始化进入该页面
           //调用wx.getLocation的API
           vm.getLocation();
         } else {
@@ -113,6 +119,7 @@ Page({
       }
     })
   },
+
   // 微信获得经纬度
   getLocation: function() {
     let vm = this;
@@ -131,6 +138,7 @@ Page({
       }
     })
   },
+
   // 获取当前地理位置
   getLocal: function(latitude, longitude) {
     let vm = this;
